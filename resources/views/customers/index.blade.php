@@ -37,7 +37,7 @@
                         <div class="btn-toolbar" role="toolbar">
                             <div class="btn-group" role="group">
                                 <button type="button" class="btn btn-primary rounded" onclick="window.location.href='{{ route('accounts.show',['id' => $customer->id])}}'"><i class="fas fa-hand-holding-usd"></i></button>
-                                <button type="button" class="btn btn-success rounded" onclick="window.location.href='{{ route('customers.edit', ['customer', $customer->id])}}'"><i class="fas fa-user-edit"></i></button>
+                                <button type="button" class="btn btn-success rounded" onclick="window.location.href='{{ route('customers.edit', ['customer' => $customer->id])}}'"><i class="fas fa-user-edit"></i></button>
                                 <form action="{{ route('customers.destroy', $customer->id)}}" method="post">
                                     @csrf
                                     @method('DELETE')
