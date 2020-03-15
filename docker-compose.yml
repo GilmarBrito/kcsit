@@ -7,18 +7,31 @@ services:
         uid: 1000
       context: ./
       dockerfile: Dockerfile
-    image: laravel7
-    container_name: app
+    image: kcsittest
+    container_name: kcsittest-app
     restart: unless-stopped
     working_dir: /var/www/
+    depends_on:
+      - db
+      - nginx
     volumes:
       - ./:/var/www
     networks:
-      - app_network
- 
+      - app-network
+    # command: /bin/sh -c "entry_point.sh"
+      # command: >
+    #   /bin/sh -c "cd /var/www 
+    #   && composer install 
+    #   && composer dump-autoload 
+    #   && php artisan key:generate 
+    #   && php artisan cache:clear 
+    #   && php artisan config:clear 
+    #   && php artisan migrate:fresh
+    #   && tail -f /dev/null"
+
   db:
     image: mysql:5.7
-    container_name: app-db
+    container_name: kcsittest-db
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
@@ -29,21 +42,22 @@ services:
       SERVICE_NAME: mysql
     volumes:
       - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
     networks:
-      - app_network
+      - app-network
 
   nginx:
     image: nginx:alpine
-    container_name: app-nginx
+    container_name: kcsittest-nginx
     restart: unless-stopped
     ports:
-      - 80:80
+      - 8000:80
     volumes:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d/
     networks:
-      - app_network
-
+      - app-network
 networks:
-  app_network:
+  app-network:
     driver: bridge
