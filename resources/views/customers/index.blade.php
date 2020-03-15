@@ -31,7 +31,7 @@
                     <td>{{$customer->gender}}</td>
                     <td>{{$customer->country}}</td>
                     <td>{{$customer->email}}</td>
-                    <td>{{$customer->current_balance}}</td>
+                    <td>{{ number_format($customer->current_balance, 2) }}</td>
                     <td>{{$customer->bonus}}</td>
                     <td>
                         <div class="btn-toolbar" role="toolbar">

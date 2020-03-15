@@ -33,7 +33,7 @@
                     <td>{{$customer->gender}}</td>
                     <td>{{$customer->country}}</td>
                     <td>{{$customer->email}}</td>
-                    <td>{{$account->current_balance}}</td>
+                    <td>{{ number_format($account->current_balance, 2) }}</td>
                     <td>{{$account->bonus}}</td>
                 </tr>
                 
@@ -58,8 +58,8 @@
                 <tr>
                     <td>{{$transaction->id}}</td>
                     <td>{{$transaction->transaction_type}}</td>
-                    <td>{{$transaction->amount}}</td>
-                    <td>{{$transaction->balance}}</td>
+                    <td>{{ number_format($transaction->amount, 2) }}</td>
+                    <td>{{ number_format($transaction->balance, 2) }}</td>
                 </tr>
                 @endforeach
                 

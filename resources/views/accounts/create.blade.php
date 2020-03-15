@@ -23,7 +23,7 @@
                 @csrf
                 <div class="form-group">    
                     <label for="current_balance">Current Balance:</label>
-                    <input type="text" class="form-control" name="current_balance" readonly value="{{ $account->current_balance }}"/>
+                    <input type="text" class="form-control" name="current_balance" readonly value="{{ number_format($account->current_balance, 2) }}"/>
                 </div>
                 <div class="form-group">
                     <label for="transaction_type">Transaction Type:</label>
