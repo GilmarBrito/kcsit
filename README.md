@@ -1,7 +1,9 @@
 ## About Test
 
 Steps<br />
-1 - git clone https://github.com/GilmarBrito/kcsittest.git
+1 - Clone this repository: git clone https://github.com/GilmarBrito/kcsittest.git
+<br />
+2 - Enter in project directory: cd kcsittest/
 <br />
 2 - Inner project directory, run these commands:
 <br />
